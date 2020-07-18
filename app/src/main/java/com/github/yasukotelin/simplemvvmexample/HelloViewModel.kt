@@ -16,9 +16,9 @@ class HelloViewModel : ViewModel() {
     // イベント通知もLiveDataでOKです！
     // 注意点としては、画面遷移などでLiveDataがActiveになった時に再度値が流れてしまうので、
     // GoogleのEvent.ktなどで1回だけイベントが飛ぶようにしてあげるといいと思います。
-    private var _showTokenAction = MutableLiveData<Event<String>>()
-    val showTokenAction
-        get() = _showTokenAction
+    private var _showToastAction = MutableLiveData<Event<String>>()
+    val showToastAction
+        get() = _showToastAction
 
     private var _navigateNextAction = MutableLiveData<Event<Unit>>()
     val navigateNextAction
@@ -29,7 +29,7 @@ class HelloViewModel : ViewModel() {
     fun reverseMessage() {
         message.value?.let {
             _message.postValue(it.reversed())
-            _showTokenAction.postValue(Event("リバースしたよ！"))
+            _showToastAction.postValue(Event("リバースしたよ！"))
         }
     }
 
